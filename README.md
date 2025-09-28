@@ -20,6 +20,7 @@ Sistema especialista em Prolog que recomenda trilhas acadêmicas de especializa�
 
 ### Requisitos
 - SWI-Prolog (recomenda-se a versão estável mais recente)
+- ou SWISH online (https://swish.swi-prolog.org).
 
 ### Instalação (Windows)
 1. Baixe o instalador em: página oficial de downloads do SWI-Prolog (https://www.swi-prolog.org/download/devel).  
@@ -60,6 +61,24 @@ ou ?- consult('testes/perfil_teste_3.pl').
 4. ?- iniciar_test.
 5. As trilhas/justificativas serão mostradas.
 
+### Rodar online (sem instalar nada)
+
+Também é possível testar o sistema diretamente no navegador via **SWISH**:
+
+1. Acesse [SWISH](https://swish.swi-prolog.org).
+2. Crie um novo programa (New → Program).
+3. Copie e cole o conteúdo de `sistema.pl`.
+   - Para rodar em modo de teste, cole também o conteúdo de `testes/perfil_teste_X.pl`, logo depois do código de `sistema.pl`.
+4. Clique em **Run!** ou execute no console:
+   ```prolog
+   ?- iniciar.
+   ```
+   ou para o modo teste:
+   ```prolog
+   ?- iniciar_test.
+   ```
+5. No modo interativo responda às perguntas com "s" ou "n" e clique em "Send".
+   
 ## Observações
 - Cada trilha (5 no total) e perfil foi definido em conformidade com o enunciado.
 - Foram retirados acentos gráficos do código (partes de impressão na tela) para melhor limpeza e visualização.
