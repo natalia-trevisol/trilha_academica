@@ -2,6 +2,7 @@
 
 ## Aluna
 Natália Moritani Trevisol
+Usuário no GitHub: natalia-trevisol
 
 ## Instituição
 - Pontifícia Universidade Católica do Paraná (PUCPR)
