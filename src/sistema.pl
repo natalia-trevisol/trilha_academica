@@ -171,18 +171,23 @@ exibir_sorted([Trilha-P|T]) :-
     exibir_sorted(T).
 
 % para cada trilha exibe quais caracteristicas (perguntas com s)
+
+% exibir_justificativas(+ListaOrdenada)
 exibir_justificativas([]).
-exibir_justificativas([Trilha-_|T]) :-  
+exibir_justificativas([Trilha-_|T]) :-
     format('~nJustificativa para ~w:~n', [Trilha]),
-    findall((Q,Carac), (pergunta(Q, Perg, Carac), resposta(Q, s)), Pairs),
-    % Filtrar Pairs para apenas aquelas que aparecem no perfil da trilha (perguntas que receberam s)
-    forall(member((Q,Carac), Pairs),
-           ( perfil(Trilha, Carac, Peso) ->   %verifica se carac ta no perfil
-               pergunta(Q, Texto, _),   %se sim busca texto da pergunta
-               format(' - Pergunta ~w (~w) contribuiu com peso ~w~n', [Q, Texto, Peso])
-           ; true
-           )),  %quais perguntas com 's' contribuíram p/ pontuação de cada trilha e com qual peso
-    exibir_justificativas(T). 
+    findall((Q,Texto,Peso),
+        ( pergunta(Q, Texto, Carac),
+          resposta(Q, s),
+          perfil(Trilha, Carac, Peso)
+        ),
+        Contribs),
+    ( Contribs = [] ->
+        writeln(' - Nenhuma pergunta contribuiu diretamente para esta trilha.')
+    ; forall(member((Q,Texto,Peso), Contribs),
+             format(' - Pergunta ~w (~w) contribuiu com peso ~w~n', [Q, Texto, Peso]))
+    ),
+    exibir_justificativas(T).
 
 % ---------------------------
 % Modo de teste automático
