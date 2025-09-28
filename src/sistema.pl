@@ -194,12 +194,16 @@ carregar_test(Arquivo) :-
     consult(Arquivo),   %carrega o arquivo (deve conter fatos resposta(id, s/n))
     % marcar respondido para cada resposta carregada
     forall(resposta(Id, _), assertz(respondido(Id))).
-	%p/ cada resposta, marca pergunta respondida (coerencia com modelo interativo)
+	% para cada resposta, marca pergunta respondida (coerencia com modelo interativo)
 
 iniciar_test :-
-    writeln('--- Modo de Teste ---'),
-    calcular_pontuacoes(Scores),
-    ordenar_exibir(Scores).
-
+    findall(Id, resposta(Id, _), Ids),
+    length(Ids, N),
+    format('--- Modo de Teste ---~nRespostas carregadas: ~w~n', [N]),
+    ( N =:= 0 ->
+        writeln('Aviso: nenhuma resposta carregada. Execute carregar_test/1 primeiro.')
+    ; calcular_pontuacoes(Scores),
+      ordenar_exibir(Scores)
+    ).
 % ---------------------
 % FIM sistema.pl
