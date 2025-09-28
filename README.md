@@ -9,7 +9,7 @@ Natália Moritani Trevisol
 - Professor: Frank Coelho de Alcantara
   
 ## Resumo
-Sistema especialista em Prolog que recomenda trilhas acadêmicas de especialização (ex.: `inteligencia_artificial`, `ciencia_de_dados`, `gestao_de_ti`, `computacao_em_nuvem`, `ciberseguranca`) com base nos interesses e afinidades do aluno. O sistema faz um questionário dinâmico, armazena respostas com `assertz/1`, calcula compatibilidade por pesos das características das trilhas nos perfis e exibe justificativas.
+Sistema especialista em Prolog que recomenda trilhas acadêmicas de especialização (ex.: `inteligencia_artificial`, `ciencia_de_dados`, `gestao_de_ti`, `computacao_em_nuvem`, `ciberseguranca`) com base nos interesses e afinidades do aluno. O sistema faz um questionário dinâmico, armazena respostas com `assertz/1`, calcula compatibilidade por pesos das características das trilhas nos perfis e exibe justificativas. Ele também possui um modo automático, no qual lê um arquivo com respostas prontas e exibe as trilhas e justificativas.
 
 ## Como executar
 
