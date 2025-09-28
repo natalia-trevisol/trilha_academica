@@ -12,11 +12,11 @@
 % Base de conhecimento
 % ---------------------------
 % trilha(Nome, Descrição).
-trilha(inteligencia_artificial, 'IA: Aprendizado de máquina, redes neurais e visão computacional.').
-trilha(ciencia_de_dados, 'Ciência de Dados: análise de dados, estatística e visualização.').
-trilha(gestao_de_ti, 'Gestão de TI: planejamento e gerenciamento de projetos tecnológicos.').
-trilha(computacao_em_nuvem, 'Computação em Nuvem: gestão de infraestruturas e serviços na nuvem.').
-trilha(ciberseguranca,'Cibersegurança: proteção de sistemas e dados.').
+trilha(inteligencia_artificial, 'IA: Aprendizado de maquina, redes neurais e visao computacional.').
+trilha(ciencia_de_dados, 'Ciencia de Dados: analise de dados, estatistica e visualizacao.').
+trilha(gestao_de_ti, 'Gestao de TI: planejamento e gerenciamento de projetos tecnologicos.').
+trilha(computacao_em_nuvem, 'Computacao em Nuvem: gestao de infraestruturas e servicos na nuvem.').
+trilha(ciberseguranca,'Ciberseguranca: protecao de sistemas e dados.').
 
 % perfil(Trilha, Caracteristica, Peso).
 % peso: 1 (baixo) .. 5 (alto)
@@ -58,21 +58,21 @@ perfil(ciberseguranca, manipulacao_dados, 3).
 perfil(ciberseguranca, consultoria, 3).
 
 % pergunta(Id, TextoPergunta, CaracteristicaRelacionada).
-pergunta(1, 'Você tem afinidade com matemática e estatística? (s/n)', matematica_estatistica).
-pergunta(2, 'Você gosta de programar em Python? (s/n)', programacao_python).
-pergunta(3, 'Interesse em aprendizado de máquina / IA? (s/n)', aprendizado_maquina).
-pergunta(4, 'Você gosta de manipular/limpar grandes conjuntos de dados? (s/n)', manipulacao_dados).
+pergunta(1, 'Voce tem afinidade com matematica e estatistica? (s/n)', matematica_estatistica).
+pergunta(2, 'Voce gosta de programar em Python? (s/n)', programacao_python).
+pergunta(3, 'Interesse em aprendizado de maquina / IA? (s/n)', aprendizado_maquina).
+pergunta(4, 'Voce gosta de manipular/limpar grandes conjuntos de dados? (s/n)', manipulacao_dados).
 pergunta(5, 'Gosta de criar visualizacoes/graficos de dados? (s/n)', visualizacao).
-pergunta(6, 'Interesse em robótica? (s/n)', robotica).
+pergunta(6, 'Interesse em robotica? (s/n)', robotica).
 pergunta(7, 'Gosta de modelar/gerenciar infraestruturas? (s/n)', infraestrutura).
-pergunta(8, 'Você gosta de manipular/configurar redes? (s/n)', redes).
-pergunta(9, 'Você tem interesse voltado para negócios? (s/n)', negocios).
-pergunta(10, 'Você tem afinidade com planejamento e organização? (s/n)', planejamento_estrategico).
-pergunta(11, 'Você se interessa em melhorar a performance/eficiência de sistemas? (s/n)', performance).
-pergunta(12, 'Interesse em segurança e proteção de dados? (s/n)', protecao_dados).
-pergunta(13, 'Você tem interesse em processar e transformar dados em soluções? (s/n)', processamento_dados).
+pergunta(8, 'Voce gosta de manipular/configurar redes? (s/n)', redes).
+pergunta(9, 'Voce tem interesse voltado para negocios? (s/n)', negocios).
+pergunta(10, 'Voce tem afinidade com planejamento e organizacao? (s/n)', planejamento_estrategico).
+pergunta(11, 'Voce se interessa em melhorar a performance/eficiencia de sistemas? (s/n)', performance).
+pergunta(12, 'Interesse em seguranca e protecao de dados? (s/n)', protecao_dados).
+pergunta(13, 'Voce tem interesse em processar e transformar dados em solucoes? (s/n)', processamento_dados).
 pergunta(14, 'Gosta de trabalhar com o cliente e prestar consultoria? (s/n)', consultoria).
-pergunta(15, 'Gosta de ser líder de equipes e tomar decisões? (s/n)', lideranca).
+pergunta(15, 'Gosta de ser lider de equipes e tomar decisoes? (s/n)', lideranca).
 pergunta(16, 'Tem boas habilidades comunicativas? (s/n)', comunicacao).
 
 % ---------------------------
