@@ -197,8 +197,6 @@ carregar_test(Arquivo) :-
 	%p/ cada resposta, marca pergunta respondida (coerencia com modelo interativo)
 
 iniciar_test :-
-    retractall(resposta(_, _)),
-    retractall(respondido(_)),
     writeln('--- Modo de Teste ---'),
     calcular_pontuacoes(Scores),
     ordenar_exibir(Scores).
