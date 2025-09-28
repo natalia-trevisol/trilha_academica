@@ -96,17 +96,17 @@ perguntar :-
 
 perguntar_lista([]).      % predicado recursivo, processa cada id
 perguntar_lista([Id|T]) :-
-    pergunta(Id, Texto, Carac),  %recupera texto e caracteristica
-    fazer_pergunta(Id, Texto, Carac),   %mostra a pergunta, le e armazena resposta
+    pergunta(Id, Texto, Carac),  % recupera texto e caracteristica
+    fazer_pergunta(Id, Texto, Carac),   % mostra a pergunta, le e armazena resposta
     perguntar_lista(T).
 
 fazer_pergunta(Id, Texto, _) :-
-    ( resposta(Id, _) -> true  %pula perguntas já respondidas (arquivo de teste ou resposta anterior)
+    ( resposta(Id, _) -> true  % pula perguntas já respondidas (arquivo de teste ou resposta anterior)
     ;
-      format('\n~w\n', [Texto]), %mostra a pergunta formatada
+      format('\n~w\n', [Texto]), % mostra a pergunta formatada
       ler_resposta(R),    % le resposta e armazena em R
-      ( R = s -> assertz(resposta(Id, s)), assertz(respondido(Id))   %se sim; assertz(resposta()) insere o predicado no banco dinamico
-      ; R = n -> assertz(resposta(Id, n)), assertz(respondido(Id))   %se não; assertz(respondido()) marca se a pergunta foi respondida
+      ( R = s -> assertz(resposta(Id, s)), assertz(respondido(Id))   % se sim; assertz(resposta()) insere o predicado no banco dinamico
+      ; R = n -> assertz(resposta(Id, n)), assertz(respondido(Id))   % se não; assertz(respondido()) marca se a pergunta foi respondida
       ; writeln('Resposta invalida. Digite s (sim) ou n (nao).'), fazer_pergunta(Id, Texto, _)
       )
     ).
@@ -114,7 +114,7 @@ fazer_pergunta(Id, Texto, _) :-
 ler_resposta(R) :-
     read_line_to_codes(user_input, Codes),   % le linha de entrada como codigos numericos
     atom_codes(A, Codes),   % transforma os Codes em atomos A
-    ( (A = 's'; A = 'S') -> R = s    %clausula normaliza 
+    ( (A = 's'; A = 'S') -> R = s    % clausula normaliza 
     ; (A = 'n'; A = 'N') -> R = n
     ; R = invalid
     ).
@@ -124,25 +124,25 @@ ler_resposta(R) :-
 % ---------------------------
 % calcular_pontuacoes(-Scores) onde Scores é lista [Trilha-Pont|...]
 calcular_pontuacoes(Scores) :-
-    findall(Trilha, trilha(Trilha, _), Trilhas),  %lista de trilhas
-    maplist(pontuacao_trilha, Trilhas, Scores). %aplica pontuacao_trilha a cada trilha produzindo lista Scores
+    findall(Trilha, trilha(Trilha, _), Trilhas),  % lista de trilhas
+    maplist(pontuacao_trilha, Trilhas, Scores). % aplica pontuacao_trilha a cada trilha produzindo lista Scores
                                                % cada elemento de Scores é trilha-pont
 
 % pontuacao_trilha(+Trilha, -Trilha-Pontuacao)
 pontuacao_trilha(Trilha, Trilha-Pont) :-
-    findall(Peso*Carac, perfil(Trilha, Carac, Peso), Lista), %para uma trilha, coleta todos os perfil()
+    findall(Peso*Carac, perfil(Trilha, Carac, Peso), Lista),  % para uma trilha, coleta todos os perfil()
     % monta Lista, formato Peso*Carac
-    calcular_soma_respostas(Lista, 0, Pont).  %soma peso das carac que user repondeu "s"
+    calcular_soma_respostas(Lista, 0, Pont).  % soma peso das carac que user repondeu "s"
 
 % calcular_soma_respostas(+ListaPesoCarac, +Acumulador, -Total); recursivo
-calcular_soma_respostas([], Acc, Acc). %lista vazia
+calcular_soma_respostas([], Acc, Acc). % lista vazia
 calcular_soma_respostas([Peso*Carac | T], Acc, Total) :-
     % Procura resposta dada para a pergunta que mapeia essa caracteristica
     % Encontra qual pergunta tem esse Carac.
-    ( pergunta(Id, _, Carac),  %busca id da pergunta com a carac
-      resposta(Id, s) ->      %se user respondeu "s" adiciona peso ao acc
+    ( pergunta(Id, _, Carac),  % busca id da pergunta com a carac
+      resposta(Id, s) ->      % se user respondeu "s" adiciona peso ao acc
         NewAcc is Acc + Peso
-    ; NewAcc = Acc   %nenhuma adicao, else
+    ; NewAcc = Acc   % nenhuma adicao, else
     ),
     calcular_soma_respostas(T, NewAcc, Total).
 
@@ -151,22 +151,22 @@ calcular_soma_respostas([Peso*Carac | T], Acc, Total) :-
 % ---------------------------
 % Ordena por pontuacao decrescente usando predsort/3 (sort customizado, definir como 2 elementos sao comparados)
 ordenar_exibir(Scores) :-
-    predsort(compare_scores_desc, Scores, Sorted),  %ordena lista Scores, vira Sorted
+    predsort(compare_scores_desc, Scores, Sorted),  % ordena lista Scores, vira Sorted
     format('\n=== Recomendacoes (ordem decrescente) ===\n', []),
-    exibir_sorted(Sorted), %percorre Sorted com trilha, pontuacao e descricao
+    exibir_sorted(Sorted), % percorre Sorted com trilha, pontuacao e descricao
     format('\n=== Justificativas ===\n', []),
-    exibir_justificativas(Sorted). %quais perguntas (cada trilha) contribuiram p/ pontuacao
+    exibir_justificativas(Sorted). % quais perguntas (cada trilha) contribuiram p/ pontuacao
 
 % comparador para predsort: com a maior pontuacao primeiro
-compare_scores_desc(Order, _T1-S1, _T2-S2) :-  %trilha1-pontuacao1
-    ( S1 > S2 -> Order = '<'  %se pont do 1 maior que 2, vai antes na lista
-    ; S1 < S2 -> Order = '>'  %contrario
-    ; Order = '=' ). %else, pontuacoes iguais qualquer ordem
+compare_scores_desc(Order, _T1-S1, _T2-S2) :-  % trilha1-pontuacao1
+    ( S1 > S2 -> Order = '<'  % se pont do 1 maior que 2, vai antes na lista
+    ; S1 < S2 -> Order = '>'  % contrario
+    ; Order = '=' ). % else, pontuacoes iguais qualquer ordem
 
 % exibir_sorted(+Lista)
-exibir_sorted([]).  %percorre lista e imprime Trilha: pontos - descricao
+exibir_sorted([]).  % percorre lista e imprime Trilha: pontos - descricao
 exibir_sorted([Trilha-P|T]) :-
-    trilha(Trilha, Desc),  %busca descricao
+    trilha(Trilha, Desc),  % busca descricao
     format('~w: ~w pontos - ~w~n', [Trilha, P, Desc]),
     exibir_sorted(T).
 
@@ -177,21 +177,21 @@ exibir_justificativas([Trilha-_|T]) :-
     findall((Q,Carac), (pergunta(Q, Perg, Carac), resposta(Q, s)), Pairs),
     % Filtrar Pairs para apenas aquelas que aparecem no perfil da trilha (perguntas que receberam s)
     forall(member((Q,Carac), Pairs),
-           ( perfil(Trilha, Carac, Peso) ->   %verifica se carac ta no perfil
-               pergunta(Q, Texto, _),   %se sim busca texto da pergunta
+           ( perfil(Trilha, Carac, Peso) ->   % verifica se carac ta no perfil
+               pergunta(Q, Texto, _),   % se sim busca texto da pergunta
                format(' - Pergunta ~w (~w) contribuiu com peso ~w~n', [Q, Texto, Peso])
            ; true
-           )),  %quais perguntas com 's' contribuíram p/ pontuação de cada trilha e com qual peso
+           )),  % quais perguntas com 's' contribuíram p/ pontuação de cada trilha e com qual peso
     exibir_justificativas(T). 
-	
+
 % ---------------------------
 % Modo de teste automático
 % Carrega respostas do arquivo de teste (resposta/2 facts) e roda apenas o cálculo
 % ---------------------------
 carregar_test(Arquivo) :-
-    retractall(resposta(_, _)),  %remove respostas antigas
-    retractall(respondido(_)),   %remove marcacoes
-    consult(Arquivo),   %carrega o arquivo (deve conter fatos resposta(id, s/n))
+    retractall(resposta(_, _)),  % remove respostas antigas
+    retractall(respondido(_)),   % remove marcacoes
+    consult(Arquivo),   % carrega o arquivo (deve conter fatos resposta(id, s ou n))
     % marcar respondido para cada resposta carregada
     forall(resposta(Id, _), assertz(respondido(Id))).
 	% para cada resposta, marca pergunta respondida (coerencia com modelo interativo)
