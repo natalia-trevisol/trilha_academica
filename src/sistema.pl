@@ -161,7 +161,7 @@ ordenar_exibir(Scores) :-
 compare_scores_desc(Order, _T1-S1, _T2-S2) :-  % trilha1-pontuacao1
     ( S1 > S2 -> Order = '<'  % se pont do 1 maior que 2, vai antes na lista
     ; S1 < S2 -> Order = '>'  % contrario
-    ; Order = '=' ). % else, pontuacoes iguais qualquer ordem
+    ; Order = '>' ). % else, pontuacoes iguais qualquer ordem
 
 % exibir_sorted(+Lista)
 exibir_sorted([]).  % percorre lista e imprime Trilha: pontos - descricao
