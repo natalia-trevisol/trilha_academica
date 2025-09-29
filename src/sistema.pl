@@ -60,20 +60,20 @@ perfil(ciberseguranca, consultoria, 3).
 % pergunta(Id, TextoPergunta, CaracteristicaRelacionada).
 pergunta(1, 'Voce tem afinidade com matematica e estatistica? (s/n)', matematica_estatistica).
 pergunta(2, 'Voce gosta de programar em Python? (s/n)', programacao_python).
-pergunta(3, 'Interesse em aprendizado de maquina / IA? (s/n)', aprendizado_maquina).
+pergunta(3, 'Voce tem interesse em aprendizado de maquina / IA? (s/n)', aprendizado_maquina).
 pergunta(4, 'Voce gosta de manipular/limpar grandes conjuntos de dados? (s/n)', manipulacao_dados).
-pergunta(5, 'Gosta de criar visualizacoes/graficos de dados? (s/n)', visualizacao).
-pergunta(6, 'Interesse em robotica? (s/n)', robotica).
-pergunta(7, 'Gosta de modelar/gerenciar infraestruturas? (s/n)', infraestrutura).
+pergunta(5, 'Voce gosta de criar visualizacoes/graficos de dados? (s/n)', visualizacao).
+pergunta(6, 'Voce tem interesse em robotica? (s/n)', robotica).
+pergunta(7, 'Voce gosta de modelar/gerenciar infraestruturas? (s/n)', infraestrutura).
 pergunta(8, 'Voce gosta de manipular/configurar redes? (s/n)', redes).
 pergunta(9, 'Voce tem interesse voltado para negocios? (s/n)', negocios).
 pergunta(10, 'Voce tem afinidade com planejamento e organizacao? (s/n)', planejamento_estrategico).
 pergunta(11, 'Voce se interessa em melhorar a performance/eficiencia de sistemas? (s/n)', performance).
-pergunta(12, 'Interesse em seguranca e protecao de dados? (s/n)', protecao_dados).
+pergunta(12, 'Voce tem interesse em seguranca e protecao de dados? (s/n)', protecao_dados).
 pergunta(13, 'Voce tem interesse em processar e transformar dados em solucoes? (s/n)', processamento_dados).
-pergunta(14, 'Gosta de trabalhar com o cliente e prestar consultoria? (s/n)', consultoria).
-pergunta(15, 'Gosta de ser lider de equipes e tomar decisoes? (s/n)', lideranca).
-pergunta(16, 'Tem boas habilidades comunicativas? (s/n)', comunicacao).
+pergunta(14, 'Voce gosta de trabalhar com o cliente e prestar consultoria? (s/n)', consultoria).
+pergunta(15, 'Voce gosta de ser lider de equipes e tomar decisoes? (s/n)', lideranca).
+pergunta(16, 'Voce tem boas habilidades comunicativas? (s/n)', comunicacao).
 
 % ---------------------------
 % Predicado principal que inicia a interação
