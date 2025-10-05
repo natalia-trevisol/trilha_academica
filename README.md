@@ -45,7 +45,7 @@ sudo apt install swi-prolog
 cd trilha_academica
 swipl
 ```
-2. ?- consult('sistema.pl').
+2. ?- consult('src/sistema.pl').
 3. ?- iniciar.
 4. Responder às perguntas com "s" ou "n".
 5. As trilhas/justificativas serão mostradas.
@@ -56,10 +56,10 @@ swipl
 cd trilha_academica
 swipl
 ```
-2. ?- consult('sistema.pl').
-3. ?- consult('testes/perfil_teste_1.pl'). 
-ou ?- consult('testes/perfil_teste_2.pl').
-ou ?- consult('testes/perfil_teste_3.pl').
+2. ?- consult('src/sistema.pl').
+3. ?- consult('src/testes/perfil_teste_1.pl'). 
+ou ?- consult('src/testes/perfil_teste_2.pl').
+ou ?- consult('src/testes/perfil_teste_3.pl').
 4. ?- iniciar_test.
 5. As trilhas/justificativas serão mostradas.
 
